@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Client = require('./controllers/clients.controller');
+const Provider = require('./controllers/providers.controller');
 
 const BASE_PATH = '/api';
 
@@ -8,5 +9,11 @@ router.get(`${BASE_PATH}/clients/:id`, Client.get);
 router.post(`${BASE_PATH}/clients`, Client.create);
 router.put(`${BASE_PATH}/clients/:id`, Client.update);
 router.delete(`${BASE_PATH}/clients/:id`, Client.delete);
+
+router.get(`${BASE_PATH}/providers`, Provider.get);
+router.get(`${BASE_PATH}/providers/:id`, Provider.get);
+router.post(`${BASE_PATH}/providers`, Provider.create);
+router.put(`${BASE_PATH}/providers/:id`, Provider.update);
+router.delete(`${BASE_PATH}/providers/:id`, Provider.delete);
 
 module.exports = router;

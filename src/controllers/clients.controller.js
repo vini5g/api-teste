@@ -1,4 +1,4 @@
-const ClientsService = require('../services/clients.serices');
+const ClientsService = require('../services/clients.services');
 
 module.exports = {
     create(req, res) {
@@ -41,7 +41,10 @@ module.exports = {
         const { id } = req.params;
         ClientsService.updateClient(data, id)
             .then(client => {
-                res.status(200).json(client);
+                ClientsService.getClient(id)
+                    .then(provider => {
+                        res.status(200).json(provider);
+                    })
             })
             .catch(error => {
                 console.error(error);
