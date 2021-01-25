@@ -1,9 +1,11 @@
 const ClientsService = require('../services/clients.services');
+const generateID = require('../utils/generateId');
 
 module.exports = {
     create(req, res) {
         const { nome, email, telefone, caracteristicas } = req.body;
-        ClientsService.createClient({ nome, email, telefone, caracteristicas }) 
+        const id = generateID();
+        ClientsService.createClient({ id, nome, email, telefone, caracteristicas }) 
             .then(client => {
                 res.status(201).json(client);
             })

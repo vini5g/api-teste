@@ -3,8 +3,7 @@ const { DataTypes } = require('sequelize');
 
 const Providers = connection.define('fornecedores', {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.TEXT,
         primaryKey: true
     },
     nome: {

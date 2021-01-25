@@ -1,9 +1,12 @@
 const ProvidersService = require('../services/providers.services');
+const generateID = require('../utils/generateId');
 
 module.exports = {
     create(req, res) {
         const { nome, email, telefone, caracteristicas } = req.body;
-        ProvidersService.createProvider({ nome, email, telefone, caracteristicas }) 
+        const id = generateID();
+
+        ProvidersService.createProvider({ id, nome, email, telefone, caracteristicas }) 
             .then(provider => {
                 res.status(201).json(provider);
             })
