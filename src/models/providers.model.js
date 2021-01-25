@@ -11,10 +11,10 @@ const Providers = connection.define('fornecedores', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Campo nome não pode ser vazio"
+                msg: "Name field cannot be empty"
             },
             notNull: {
-                msg: "Por favor informe seu nome"
+                msg: "Please enter your name"
             }
         },
     },
@@ -24,13 +24,13 @@ const Providers = connection.define('fornecedores', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Campo e-mail não pode ser vazio"
+                msg: "E-mail field cannot be empty"
             },
             notNull: {
-                msg: "Por favor informe seu e-mail"
+                msg: "Please enter your e-mail"
             },
             isEmail: {
-                msg: "Informe um e-mail válido"
+                msg: "Please type a valid e-mail"
             }
         }
     },
