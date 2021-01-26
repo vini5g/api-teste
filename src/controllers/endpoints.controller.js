@@ -3,9 +3,9 @@ const generateID = require('../utils/generateId');
 
 module.exports = {
     get(req, res) {
-        const { nome, id } = req.query;
+        const { table, id } = req.params;
 
-        EndpointServices.get(nome, id)
+        EndpointServices.get(table, id)
             .then(data => {
                 res.status(201).json(data);
             })
@@ -16,13 +16,13 @@ module.exports = {
     },
 
     post(req, res) {
-        const { nome } = req.query;
+        const { table } = req.params;
         const data = req.body;
         const id = generateID();
        
-        EndpointServices.post(nome, { id, ...data })
+        EndpointServices.post(table, { id, ...data })
             .then(data => {
-                EndpointServices.get(nome, id)
+                EndpointServices.get(table, id)
                     .then(user => {
                         res.status(201).json(user);
                     })
@@ -38,13 +38,13 @@ module.exports = {
     },
 
     put(req, res) {
-        const { nome, id } = req.query;
+        const { table, id } = req.params;
         const data = req.body;
-        EndpointServices.put(nome, id, data)
+        EndpointServices.put(table, id, data)
             .then(result => {
                 if (result != 2) res.status(400).send(result);
                 
-                EndpointServices.get(nome, id)
+                EndpointServices.get(table, id)
                     .then(user => {
                         res.status(200).json(user);
                     })
@@ -60,8 +60,8 @@ module.exports = {
     },
 
     delete(req, res) {
-        const { nome, id } = req.query;
-        EndpointServices.delete(nome, id)
+        const { table, id } = req.params;
+        EndpointServices.delete(table, id)
             .then(result => {
                 if (result != 2) res.status(400).send(result);
                 res.status(200).json('Deleted successfully');

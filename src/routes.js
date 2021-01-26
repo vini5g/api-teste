@@ -17,9 +17,10 @@ router.post(`${BASE_PATH}/providers`, Provider.create);
 router.put(`${BASE_PATH}/providers/:id`, Provider.update);
 router.delete(`${BASE_PATH}/providers/:id`, Provider.delete);
 
-router.get(`${BASE_PATH}/endpoints`, Endpoints.get);
-router.post(`${BASE_PATH}/endpoints`, Endpoints.post);
-router.put(`${BASE_PATH}/endpoints`, Endpoints.put);
-router.delete(`${BASE_PATH}/endpoints`, Endpoints.delete);
+router.get(`${BASE_PATH}/endpoints/:table`, Endpoints.get);
+router.get(`${BASE_PATH}/endpoints/:table/:id`, Endpoints.get);
+router.post(`${BASE_PATH}/endpoints/:table`, Endpoints.post);
+router.put(`${BASE_PATH}/endpoints/:table/:id`, Endpoints.put);
+router.delete(`${BASE_PATH}/endpoints/:table/:id`, Endpoints.delete);
 
 module.exports = router;
